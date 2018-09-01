@@ -1,0 +1,146 @@
+swagger: "2.0"
+info:
+  description: "Activities Test API"
+  version: "1.0.0"
+  title: "Activities Test"
+host: "localhost"
+basePath: "/test"
+tags:
+- name: "activity"
+  description: "Everything related to activities"
+schemes:
+- "http"
+paths:
+  /activities/{city}:
+    get:
+      tags:
+      - "activity"
+      summary: "Finds Activities"
+      description: "optional filter can be applied if properties'category', 'location' or 'district' are provided"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "city"
+        in: "path"
+        description: "City to filter by"
+        required: true
+        type: "string"
+      - name: "category"
+        in: "query"
+        description: "Category value to filter by"
+        required: false
+        type: "string"
+      - name: "location"
+        in: "query"
+        description: "Location value to filter by"
+        required: false
+        type: "string"
+      - name: "district"
+        in: "query"
+        description: "District value to filter by"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Activity"
+  /activities/{city}/findByCategoryAndDateTime/{category}/{date}/{startTime}/{endTime}:
+    get:
+      tags:
+      - "activity"
+      summary: "Finds best activity for a given time"
+      description: "Returns a single activity"
+      operationId: "getActivityByTime"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "city"
+        in: "path"
+        description: "City to filter by"
+        required: true
+        type: "string"
+      - name: "category"
+        in: "path"
+        description: "The preferred category for to filter activities"
+        required: true
+        type: "string"
+      - name: "date"
+        in: "path"
+        description: "Date of the desired day"
+        required: true
+        type: "string"
+        format: "date"
+      - name: "startTime"
+        in: "path"
+        description: "Desired hour to start the activity"
+        required: true
+        type: "string"
+      - name: "endTime"
+        in: "path"
+        description: "Desired hour to end the activity"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Activity"
+definitions:
+  Activity:
+    type: "object"
+    properties:
+      name:
+          type: "string"
+      opening_hours:
+          $ref: '#/definitions/OpeningHours'
+      hours_spent:
+          type: "number"
+          format: "float"
+      category:
+          type: "string"
+      location:
+          type: "string"
+      district:
+          type: "string"
+      latlng:
+          $ref: '#/definitions/Point'
+  OpeningHours:
+    type: "object"
+    properties:
+      mo:
+        type: "array"
+        items:
+          type: string
+      tu:
+        type: "array"
+        items:
+          type: string
+      we:
+        type: "array"
+        items:
+          type: string
+      th:
+        type: "array"
+        items:
+          type: string
+      fr:
+        type: "array"
+        items:
+          type: string
+      sa:
+        type: "array"
+        items:
+          type: string
+      su:
+        type: "array"
+        items:
+          type: string
+  Point:
+    type: array
+    maxItems: 2
+    minItems: 2
+    items:
+      type: number
