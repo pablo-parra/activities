@@ -5,7 +5,7 @@ example of activities service
 You only need [Java](https://www.java.com/en/download/) and [Maven](https://maven.apache.org/) in order to run the app.
 
 ## Run the app
-First we need to create the runnable artifact. Simply go to the service directory (where the _pom.xml_ is located) and execute the command:
+First we need to create the runnable artifact. Simply go to the _service_ directory (where the _pom.xml_ is located) and execute the command:
 
 `.../service> mvn clean package`
 
@@ -45,6 +45,6 @@ or
 `http://localhost:8080/test/api/v1/activities/madrid/findBest/cultural/2018-09-03T20:00:00/2018-09-03T21:00:00`
 
 ## Run the tests
-The test can be executed from the service directory (where the _pom.xml_ is located) using the command
+The test can be executed from the _service_ directory (where the _pom.xml_ is located) using the command
 
 `.../service> mvn clean test`
