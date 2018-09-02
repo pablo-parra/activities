@@ -47,13 +47,12 @@ paths:
             type: "array"
             items:
               $ref: "#/definitions/Activity"
-  /activities/{city}/findByCategoryAndDateTime/{category}/{date}/{startTime}/{endTime}:
+  /activities/{city}/findBest/{category}/{startDatetime}/{endDatetime}:
     get:
       tags:
       - "activity"
-      summary: "Finds best activity for a given time"
+      summary: "Finds best activity for a given category and range of time"
       description: "Returns a single activity"
-      operationId: "getActivityByTime"
       produces:
       - "application/json"
       parameters:
@@ -67,22 +66,18 @@ paths:
         description: "The preferred category for to filter activities"
         required: true
         type: "string"
-      - name: "date"
+      - name: "startDatetime"
         in: "path"
-        description: "Date of the desired day"
+        description: "Desired date and time to start the activity"
         required: true
         type: "string"
-        format: "date"
-      - name: "startTime"
+        format: "date-time"
+      - name: "endDatetime"
         in: "path"
-        description: "Desired hour to start the activity"
+        description: "Desired date and time to end the activity"
         required: true
         type: "string"
-      - name: "endTime"
-        in: "path"
-        description: "Desired hour to end the activity"
-        required: true
-        type: "string"
+        format: "date-time"
       responses:
         200:
           description: "successful operation"

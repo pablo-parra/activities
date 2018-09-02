@@ -1,5 +1,6 @@
 package pab.par.dom.activities.logic.dto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class OpeningHours {
@@ -72,5 +73,27 @@ public class OpeningHours {
 
     public void setSu(List<String> su) {
         this.su = su;
+    }
+
+    public List<String> getByIndex(int index){
+        List<String> openingHours = new ArrayList<>();
+
+        if (index == 1){
+            openingHours =  this.mo;
+        }else if (index == 2){
+            openingHours = this.tu;
+        }else if (index == 3){
+            openingHours = this.we;
+        }else if (index == 4){
+            openingHours = this.th;
+        }else if (index == 5){
+            openingHours = this.fr;
+        }else if (index == 6){
+            openingHours = this.sa;
+        }else if (index == 7){
+            openingHours = this.su;
+        }
+
+        return openingHours;
     }
 }

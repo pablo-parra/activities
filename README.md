@@ -25,10 +25,10 @@ The available endpoints are defined in the _activities.yaml_ file.
 ### Endpoint examples
 
 #### To retrieve all activities (with no filter):
-`http://localhost:8080/test/api/v1/activities/madrid?category=&location=&district=`
+`http://localhost:8080/test/api/v1/activities/madrid`
 
 #### To filter the activities:
-`http://localhost:8080/test/api/v1/activities/madrid?category=shopping&location=outdoors&district=`
+`http://localhost:8080/test/api/v1/activities/madrid?category=shopping&location=outdoors`
 
 or
 
