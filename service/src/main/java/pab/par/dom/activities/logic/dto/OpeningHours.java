@@ -3,6 +3,9 @@ package pab.par.dom.activities.logic.dto;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Class to manage the Opening Hours
+ */
 public class OpeningHours {
 
     private List<String> mo = null;

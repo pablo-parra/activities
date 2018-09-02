@@ -1,5 +1,8 @@
 package pab.par.dom.activities.logic.dto;
 
+/**
+ * Class to manage the available search filters
+ */
 public class SearchCriteria {
 
     private String city;

@@ -2,6 +2,9 @@ package pab.par.dom.activities.logic.dto;
 
 import com.google.gson.annotations.SerializedName;
 
+/**
+ * Class to manage activities
+ */
 public class Activity {
 
     private String name = null;

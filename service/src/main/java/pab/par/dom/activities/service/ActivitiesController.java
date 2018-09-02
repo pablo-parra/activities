@@ -11,7 +11,6 @@ import pab.par.dom.activities.logic.dto.SearchCriteria;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 /**
  * REST controller for Activities service
@@ -25,7 +24,7 @@ public class ActivitiesController {
     private Activitymanagement activityManagement;
 
     /**
-     * @return the list of all articles of the catalog that fits the provided filters
+     * @return the list of all activities that fit the provided filters
      */
     @RequestMapping(value = "/activities/{city}", method = RequestMethod.GET)
     public @ResponseBody ResponseEntity<?> getActivities(@PathVariable("city") String city,
@@ -37,7 +36,7 @@ public class ActivitiesController {
     }
 
     /**
-     * @return the list of all articles of the catalog that fits the provided filters
+     * @return the recommended Activity based on the provided preferences
      */
     @RequestMapping(value = "/activities/{city}/findBest/{category}/{startDatetime}/{endDatetime}", method = RequestMethod.GET)
     public @ResponseBody ResponseEntity<?> findBest(@PathVariable("city") String city,
@@ -50,14 +49,5 @@ public class ActivitiesController {
 
         return new ResponseEntity<>(this.activityManagement.findBest(new SearchCriteria(city, category, null, null), startDatetime, endDatetime), HttpStatus.OK);
     }
-
-    /**
-     * @return the article info by id
-     */
-/*    @RequestMapping(value = "/article/{id}", method = RequestMethod.GET)
-    public @ResponseBody ResponseEntity<?> getArticle(@PathVariable("id") Long id) {
-
-        return new ResponseEntity<>(this.catalogmanagement.getArticle(id), HttpStatus.OK);
-    }*/
 
 }

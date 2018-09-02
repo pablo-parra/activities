@@ -1,6 +1,5 @@
 package pab.par.dom.activities.dataaccess.impl;
 
-import com.fasterxml.jackson.core.json.UTF8DataInputJsonParser;
 import com.google.gson.Gson;
 import org.apache.commons.io.IOUtils;
 import org.springframework.stereotype.Component;
@@ -16,6 +15,9 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * Implementation of the ActivityDao interface
+ */
 @Component
 public class ActivityDaoImpl implements ActivityDao{
 
@@ -30,7 +32,6 @@ public class ActivityDaoImpl implements ActivityDao{
         List<Activity> activityList = new ArrayList();
 
         try {
-            LOG.info("Getting activities...");
             String fileContent = IOUtils.toString(classLoader.getResourceAsStream("madrid.json"), Charset.defaultCharset());
             activityList = Arrays.asList(new Gson().fromJson(fileContent, Activity[].class));
             return activityList;
